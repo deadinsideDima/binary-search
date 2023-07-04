@@ -26,7 +26,40 @@ namespace BinarySearchTask
         /// </example>
         public static int? BinarySearch(int[]? source, int value)
         {
-            throw new NotImplementedException("You need to implement this function.");
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (source.Length == 0)
+            {
+                return null;
+            }
+
+            int first = 0;
+            int last = source.Length;
+            int middle = 0;
+            while (last > first + 1)
+            {
+               middle = (first + last) / 2;
+               if (source[middle] <= value)
+               {
+                    first = middle;
+               }
+               else
+               {
+                    last = middle;
+               }
+            }
+
+            if (source[first] == value)
+            {
+                return first;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
